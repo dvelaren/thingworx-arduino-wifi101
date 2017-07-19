@@ -24,22 +24,21 @@ ThingWorx::ThingWorx(char* server, int port, char* appKey, char* thingName, char
   _serviceName = serviceName;
 }
 
-void ThingWorx::post(int sensorCount, char* sensorNames[], float values[]) {
+void ThingWorx::post(const int sensorCount, char* sensorNames[], float values[]) {
   String url = "/Thingworx/Things/";
   String body = "";
-  url += thingName;
+  url += _thingName;
   url += "/Services/";
-  url += serviceName;
+  url += _serviceName;
   for (int idx = 0; idx < sensorCount; idx++) {
     if (idx != 0) body += "&";
-    body += propertyNames[idx];
+    body += sensorNames[idx];
     body += "=";
     body += values[idx];
   }
   if (_client.connect(_server, _port)) {
-    Serial.println("Connected to:" + String(_server) + ":" + String(_port));
+    Serial.println("Connected to: " + String(_server) + ":" + String(_port));
     //Send the HTTP POST request:
-
     _client.print(String("POST ") + url + " HTTP/1.1\r\n" +
     "Host: " + _server + "\r\n" +
     "Content-Type: application/x-www-form-urlencoded\r\n" +
@@ -55,18 +54,19 @@ void ThingWorx::post(int sensorCount, char* sensorNames[], float values[]) {
     "Connection: close\r\n" +
     "appKey: " + _appKey + "\r\n\r\n" +
     body + "\r\n\r\n");
-  }
-  unsigned long timeout = millis();
-  while (_client.available() == 0) {
-    if (millis() - timeout > 5000) {
-      Serial.println(">>> Client Timeout !");
-      _client.stop();
-      return;
+
+    unsigned long timeout = millis();
+    while (_client.available() == 0) {
+      if (millis() - timeout > 5000) {
+        Serial.println(">>> Client Timeout !");
+        _client.stop();
+        return;
+      }
     }
-  }
-  while (_client.available()) {
-    String line = _client.readStringUntil('\r');
-    Serial.print(line);
+    while (_client.available()) {
+      String line = _client.readStringUntil('\r');
+      Serial.print(line);
+    }
   }
   else {
     Serial.println("The connection could not be established");

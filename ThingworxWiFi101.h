@@ -25,7 +25,7 @@ your first input.  Everything is case sensitive.
 class ThingWorx {
 	public:
 		ThingWorx(char* server, int port, char* appKey, char* thingName, char* serviceName);
-		void post(int sensorCount, char* sensorNames[], float values[]);
+		void post(const int sensorCount, char* sensorNames[], float values[]);
 
 	private:
     WiFiClient _client;
