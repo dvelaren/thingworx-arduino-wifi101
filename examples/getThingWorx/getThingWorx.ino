@@ -23,7 +23,7 @@ String inputJson = "";  //Variable to store Input Properties JSON
 //->Timing Vars
 unsigned long lastConnectionTime = 0; //Last connection ms time between server requests
 //->ThingworxWiFi101 Vars
-ThingWorx myThing(host, port, appKey, thingName, serviceName);  //Declare the TWX object with his corresponding properties
+ThingWorx myThing(host, port, appKey, thingName);  //Declare the TWX object with his corresponding properties
 
 //Subroutines & functions
 void printWifiStatus() {
