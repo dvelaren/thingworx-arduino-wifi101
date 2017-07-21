@@ -26,6 +26,9 @@ class ThingWorx {
 	public:
 		ThingWorx(char* server, int port, char* appKey, char* thingName, char* serviceName);
 		void post(const int sensorCount, char* sensorNames[], float values[]);
+		String getjson();
+		String getjson(String property);
+		//void get(const int inputCount, char* inputNames[], float *inputValues);	To be implemented
 
 	private:
     WiFiClient _client;
