@@ -1,2 +1,3 @@
 ThingWorx	KEYWORD1
 post KEYWORD2
+getjson KEYWORD2
