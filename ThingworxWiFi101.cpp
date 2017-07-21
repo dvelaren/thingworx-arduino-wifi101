@@ -12,6 +12,26 @@ me.PropertyTwo = parseFloat(InputTwo);
 
 Where Property one is the name of your first Thing or ThingShape property and InputOne is the name of
 your first input.  Everything is case sensitive.
+
+The REST API documentation was obtained from:
+https://support.ptc.com/appserver/cs/view/solution.jsp?n=CS249622&art_lang=en&posno=1&q=Thingworx%20post%20request%20arduino&ProductFamily=ThingWorx%7CNRN%7CAxeda&source=search
+
+GET Request example:
+GET /Thingworx/Things/MyThing/Properties/MyProperty HTTP/1.1
+Host: thingworx.myserver.com
+Accept: application/json
+Connection: close
+appKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+POST Request example:
+POST /Thingworx/Things/MyThing/Services/MyService HTTP/1.1
+Host: thingworx.myserver.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27
+Connection: close
+appKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+MY_PARAM1=123&MY_PARAM2=abc
 ************************************************************************************************************/
 
 #include "ThingWorxWiFi101.h"
