@@ -24,7 +24,7 @@ your first input.  Everything is case sensitive.
 
 class ThingWorx {
 	public:
-		ThingWorx(char* server, int port, char* appKey, char* thingName, char* serviceName);
+		ThingWorx(char* server, int port, char* appKey, char* thingName, char* serviceName = "");
 		void post(const int sensorCount, char* sensorNames[], float values[]);
 		String getjson();
 		String getjson(String property);
