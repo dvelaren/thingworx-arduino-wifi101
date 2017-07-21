@@ -10,7 +10,7 @@ Arduino library using REST API to send and receive data to Thingworx platform 8.
 
 ## REST API for Thingworx 8
 
-The REST API implemented in this library follows this format:
+The [REST API](https://support.ptc.com/appserver/cs/view/solution.jsp?n=CS249622) implemented in this library follows this format:
 
 GET request
 ```javascript
