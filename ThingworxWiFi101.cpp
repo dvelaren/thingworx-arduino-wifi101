@@ -73,3 +73,57 @@ void ThingWorx::post(const int sensorCount, char* sensorNames[], float values[])
     _client.stop();
   }
 }
+
+String ThingWorx::getjson() {
+  return getjson("");
+}
+
+String ThingWorx::getjson(String property) {
+  String url = "/Thingworx/Things/";
+  url += _thingName;
+  url += "/Properties/";
+  url += property;
+  if (_client.connect(_server, _port)) {
+    Serial.println("Connected to: " + String(_server) + ":" + String(_port));
+
+    //Send the HTTP GET request:
+    _client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+    "Host: " + _server + "\r\n" +
+    "Accept: application/json\r\n" +
+    "Connection: close\r\n" +
+    "appKey: " + _appKey + "\r\n\r\n");
+
+    Serial.print(String("GET ") + url + " HTTP/1.1\r\n" +
+    "Host: " + _server + "\r\n" +
+    "Accept: application/json\r\n" +
+    "Connection: close\r\n" +
+    "appKey: " + _appKey + "\r\n\r\n");
+
+    unsigned long timeout = millis();
+    while (_client.available() == 0) {
+      if (millis() - timeout > 5000) {
+        Serial.println(">>> Client Timeout !");
+        _client.stop();
+        return "Error";
+      }
+    }
+    String json = "";
+    boolean httpBody = false;
+    while (_client.available()) {
+      String line = _client.readStringUntil('\r');
+      Serial.print(line);
+      if (!httpBody && line.charAt(1) == '{') {
+        httpBody = true;
+      }
+      if (httpBody) {
+        json += line;
+        httpBody = false;
+      }
+    }
+    return json;
+  }
+  else {
+    Serial.println("The connection could not be established");
+    _client.stop();
+  }
+}
