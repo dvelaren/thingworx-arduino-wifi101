@@ -1,7 +1,7 @@
 //Name: getThingWorx
 //Author: David Velasquez
 //Date: 19/07/2017
-//Description: This program sends 2 sensor vars to Thingworx Server.
+//Description: This program gets Thingworx Server variables using REST GET request.
 
 //Libraries
 #include <ThingworxWiFi101.h>
