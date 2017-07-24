@@ -1,7 +1,7 @@
 //Name: getThingWorx
 //Author: David Velasquez
 //Date: 19/07/2017
-//Description: This program gets Thingworx Server variables using REST GET request.
+//Description: This program gets Thingworx Server variables using REST GET request through ThingworxWiFi101 library
 
 //Libraries
 #include <ThingworxWiFi101.h>
