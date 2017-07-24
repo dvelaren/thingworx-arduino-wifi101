@@ -8,6 +8,7 @@ Arduino library using REST API to send and receive data to Thingworx platform 8.
 * [Arduino IDE 1.8.3 or higher](https://www.arduino.cc/en/Main/Software).
 * [Thingworx Arduino WiFi101 Library](https://github.com/tidusdavid/thingworx-arduino-wifi101).
 * [Thingworx Platform 8.0 or higher](https://www.ptc.com/en/thingworx8)
+* [ArduinoJson Library](https://github.com/bblanchon/ArduinoJson) for getThingWorxJSONLib demo
 
 ## REST API for Thingworx 8
 
