@@ -1,4 +1,5 @@
 # thingworx-arduino-wifi101
+![alt text](https://raw.githubusercontent.com/tidusdavid/thingworx-arduino-wifi101/master/resources/general.png)
 Arduino library using REST API to send and receive data to Thingworx platform 8. It allows to send and receive multiple variables with the provided methods.
 
 ## Requirements
