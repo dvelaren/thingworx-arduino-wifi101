@@ -87,6 +87,7 @@ void ThingWorx::post(const int sensorCount, char* sensorNames[], float values[])
       String line = _client.readStringUntil('\r');
       Serial.print(line);
     }
+    _client.stop();
   }
   else {
     Serial.println("The connection could not be established");
